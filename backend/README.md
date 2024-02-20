@@ -1,3 +1,9 @@
+---
+runme:
+  id: 01HQ4CYJC2BCMKDNHDANA5KGYS
+  version: v3
+---
+
 # Mes-docs (backend)
 
 Mes-docs est un générateur d'ordonnances mis en place pour faciliter et fluidifier l'écriture de prescriptions médicales. Mes-docs permet aussi aux pharmaciens de lire avec plus de facilités les medicaments préscrits.
@@ -29,7 +35,6 @@ L'API tourne sur le port 5050
 | Paramètres | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `docName` | `string` | **Required**. Nom du médecin |
-| `profession` | `string` | **Required**. Profession du médecin |
 | `docAddress` | `string` | **Required**. Adresse du cabinet du médecin |
 | `docCityAndZipCode` | `string` | **Required**. Ville et code postal du cabinet du médecin |
 | `docPhone` | `string` | **Required**. Téléphone du cabinet du médecin |

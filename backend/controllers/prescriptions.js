@@ -19,10 +19,7 @@ export const createPrescription = (req, res, next) => {
     .fillColor("#ADD8E6")
     .fontSize(16)
     .text(`Dr. ${prescriptionData.docName}`);
-  doc
-    .font("Helvetica-Bold")
-    .fontSize(14)
-    .text(`${prescriptionData.profession}`);
+  doc.font("Helvetica-Bold").fontSize(14).text("Médecin généraliste");
 
   const professionYPosition = doc.y;
   doc
