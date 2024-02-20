@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HQ49MNVPJ78M11GDF80Y8STJ
-  version: v3
----
-
 # Mes-docs (backend)
 
 Mes-docs est un générateur d'ordonnances mis en place pour faciliter et fluidifier l'écriture de prescriptions médicales. Mes-docs permet aussi aux pharmaciens de lire avec plus de facilités les medicaments préscrits.
