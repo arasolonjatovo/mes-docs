@@ -67,11 +67,13 @@ export const createPrescription = (req, res, next) => {
 
   doc.moveDown(3);
 
-  // prescriptionData.prescriptions.forEach((prescription) => {
-  //   doc.fontSize(12).text(`${prescription.medication}, ${prescription.dosage}`);
-  //   doc.fontSize(12).text(`${prescription.instructions}`);
-  //   doc.moveDown(2);
-  // });
+  prescriptionData.prescriptions.forEach((prescription) => {
+    doc
+      .fontSize(12)
+      .text(`${prescription.medication}, ${prescription.dosage}mg`);
+    doc.fontSize(12).text(`${prescription.instruction}`);
+    doc.moveDown(2);
+  });
 
   // generate unique name for prescription
 
