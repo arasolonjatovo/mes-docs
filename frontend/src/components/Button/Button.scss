@@ -12,14 +12,7 @@
     max-width: fit-content;
     text-align: center;
     font-weight: 600;
-
     margin: 20px 0;
-
-    &>svg {
-        width: 16px;
-        height: 16px;
-        color: $primary-color;
-    }
 
     &.primary {
         background: $primary-color;
@@ -30,5 +23,13 @@
         border: $primary-color 2px solid;
         color: $primary-color;
         background-color: transparent;
+    }
+
+    &.svg {
+        border: none;
+        background-color: transparent;
+        color: $primary-color;
+        font-size: 24px;
+        cursor: pointer;
     }
 }

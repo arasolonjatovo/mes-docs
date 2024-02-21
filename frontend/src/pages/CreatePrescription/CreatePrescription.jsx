@@ -31,6 +31,12 @@ export default function CreatePrescription() {
 
   const [medications, setMedications] = useState([])
 
+  const handleDelete = (index) => {
+    const updatedMedications = [...medications]
+    updatedMedications.splice(index, 1)
+    setMedications(updatedMedications)
+  }
+
   const handleMedication = (event) => {
     event.preventDefault()
     const newMedication = {
@@ -187,8 +193,13 @@ export default function CreatePrescription() {
                 <li key={index}>
                   <p>
                     {medication.medication} • {medication.dosage}mg •{' '}
-                    {medication.instruction} {index}
+                    {medication.instruction}
                   </p>
+                  <Button
+                    label={<IoMdTrash />}
+                    onClick={() => handleDelete(index)}
+                    variant="svg"
+                  />
                 </li>
               ))}
             </ul>
