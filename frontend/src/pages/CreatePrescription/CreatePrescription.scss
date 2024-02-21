@@ -1,0 +1,25 @@
+.prescription {
+    margin: 30px 50px;
+    display: flex;
+    flex-direction: column;
+
+    &__doc,
+    &__patient {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        row-gap: 8px;
+
+        & input,
+        & select {
+            border: red solid 1px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: 40%;
+        }
+
+        & h2 {
+            margin-bottom: 30px;
+        }
+    }
+}
