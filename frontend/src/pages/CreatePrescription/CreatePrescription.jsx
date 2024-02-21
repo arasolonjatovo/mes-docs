@@ -78,12 +78,13 @@ export default function CreatePrescription() {
       })
 
       if (!response.ok) {
-        throw new Error('Failed to submit form')
+        throw new Error('Failed to generate prescription')
       }
-
-      console.log('Form submitted successfully')
+      const pdfBlob = await response.blob()
+      const url = URL.createObjectURL(pdfBlob)
+      window.open(url, '_blank')
     } catch (error) {
-      console.error('Error submitting form:', error)
+      console.error('Error generating prescription:', error)
     }
   }
 

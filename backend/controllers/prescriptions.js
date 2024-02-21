@@ -103,17 +103,12 @@ export const createPrescription = (req, res, next) => {
   // send doc in res
 
   writeStream.on("finish", function () {
-    res.sendFile(
-      path.join("prescriptions", fileName),
-      { root: "." },
-      function (err) {
-        if (err) {
-          console.error("Error sending PDF file :", err);
-          return res.status(500).end();
-        } else {
-          console.log("PDF file sent successfully !");
-        }
-      }
-    );
+    const filePath = path.join("prescriptions", fileName);
+    const fileStream = fs.createReadStream(filePath);
+
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", 'inline; filename="' + fileName + '"');
+
+    fileStream.pipe(res);
   });
 };
