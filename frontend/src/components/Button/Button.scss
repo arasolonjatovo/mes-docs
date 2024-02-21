@@ -1,0 +1,24 @@
+@import '../../style/variables';
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+
+    margin: 20px 0;
+
+    &.primary {
+        background: $primary-color;
+        color: white;
+    }
+
+    &.secondary {
+        border: $primary-color 2px solid;
+        color: $primary-color;
+        background-color: transparent;
+    }
+}
