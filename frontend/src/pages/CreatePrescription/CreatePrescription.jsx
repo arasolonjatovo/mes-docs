@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
 
+import Button from '../../components/Button/Button'
+
 import './CreatePrescription.scss'
 
 export default function CreatePrescription() {
@@ -21,7 +23,7 @@ export default function CreatePrescription() {
   const ageRef = useRef(null)
   const weightRef = useRef(null)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const formData = {
       docName: nameRef.current.value,
@@ -37,6 +39,24 @@ export default function CreatePrescription() {
     }
 
     console.log(formData)
+
+    try {
+      const response = await fetch('http://localhost:5050/new-prescription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form')
+      }
+
+      console.log('Form submitted successfully')
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    }
   }
 
   return (
@@ -51,7 +71,6 @@ export default function CreatePrescription() {
             id="name"
             autoComplete="name"
             ref={nameRef}
-
           />
           <input
             type="text"
@@ -59,14 +78,12 @@ export default function CreatePrescription() {
             id="address"
             autoComplete="address"
             ref={addressRef}
-
           />
           <input
             type="text"
             placeholder="Votre ville et code postal"
             id="city"
             ref={cityRef}
-
           />
           <input
             type="text"
@@ -74,17 +91,11 @@ export default function CreatePrescription() {
             id="phone"
             autoComplete="phone"
             ref={phoneRef}
-
           />
         </div>
         <div className="prescription__patient">
           <h2>Informations du patient</h2>
-          <select
-            name="gender"
-            id="gender-select"
-            ref={genderRef}
-
-          >
+          <select name="gender" id="gender-select" ref={genderRef}>
             <option value="Madame">Madame</option>
             <option value="Monsieur">Monsieur</option>
           </select>
@@ -93,33 +104,32 @@ export default function CreatePrescription() {
             placeholder="Nom du patient"
             id="patientName"
             ref={patientSNameRef}
-
           />
           <input
             type="text"
             placeholder="Prénom du patient"
             id="patientFName"
             ref={patientFNameRef}
-
           />
           <input
             type="number"
             placeholder="Âge du patient"
             id="patientAge"
             ref={ageRef}
-
           />
           <input
             type="number"
             placeholder="Poids du patient (en kg)"
             id="patientWeight"
             ref={weightRef}
-
           />
         </div>
-        <button type="submit" onClick={handleSubmit}>
-          Soumettre
-        </button>
+        <Button
+          type="submit"
+          onClick={handleSubmit}
+          variant="primary"
+          label="Générer"
+        />
       </form>
     </div>
   )
