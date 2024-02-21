@@ -7,6 +7,8 @@ export const createPrescription = (req, res, next) => {
 
   const prescriptionData = req.body;
 
+  const city = prescriptionData.docCityAndZipCode.split(" ")[0];
+
   // create new prescriptions
   const doc = new PDFDocument({
     size: "A4",
@@ -50,10 +52,7 @@ export const createPrescription = (req, res, next) => {
   doc
     .font("Helvetica")
     .fillColor("black")
-    .text(
-      `${prescriptionData.docCityAndZipCode}, le ${prescriptionData.generationDate}`,
-      { align: "right" }
-    );
+    .text(`${city}, le ${prescriptionData.generationDate}`, { align: "right" });
 
   doc.moveDown(5);
 
@@ -68,11 +67,11 @@ export const createPrescription = (req, res, next) => {
 
   doc.moveDown(3);
 
-  prescriptionData.prescriptions.forEach((prescription) => {
-    doc.fontSize(12).text(`${prescription.medication}, ${prescription.dosage}`);
-    doc.fontSize(12).text(`${prescription.instructions}`);
-    doc.moveDown(2);
-  });
+  // prescriptionData.prescriptions.forEach((prescription) => {
+  //   doc.fontSize(12).text(`${prescription.medication}, ${prescription.dosage}`);
+  //   doc.fontSize(12).text(`${prescription.instructions}`);
+  //   doc.moveDown(2);
+  // });
 
   // generate unique name for prescription
 
